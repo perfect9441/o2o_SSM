@@ -140,6 +140,11 @@ public class ProductManagementController {
 		}
 		return modelMap;
 	}
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/modifyproduct",method = RequestMethod.POST)
 	@ResponseBody
 	private Map<String, Object> modifyProduct(HttpServletRequest request){
@@ -202,27 +207,22 @@ public class ProductManagementController {
 			modelMap.put("errMsg", ProductStateEnum.PRODUCT_EMPTY.getStateInfo());
 		}
 		return modelMap;
-////		接受前段参数变量的初始化，包括商品、缩略图、详情图列表实体类
-//		ObjectMapper mapper = new ObjectMapper();
-//		Product product  = null;
-//		
-//		ObjectMapper mapper = new ObjectMapper();
-//		try {
-//			productStr = 
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
-//		MultipartFile productImg = null;
-//		List<MultipartFile> productImgList = new ArrayList<MultipartFile>();
-//		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
-//		try {
-//			if(multipartResolver.isMultipart(request)) {
-//				MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
-//				
-//			}
-//		} catch (Exception e) {
-//			
-//		}
+	}
+	@RequestMapping(value="/getproductlistbyshop",method = RequestMethod.GET)
+	@ResponseBody
+	private Map<String, Object> getProductListByShop(HttpServletRequest request){
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+//		获取前台传过来的页码
+		int pageIndex = HttpServletRequestUtil.getInt(request, "pageIndex");
+//		获取前台传过来的每一页获取的商品数量上限
+		int pageSize = HttpServletRequestUtil.getInt(request, "pageSize");
+//		从session中获取店铺信息，主要获取shopId
+		Shop currentShop = (Shop) request.getSession().getAttribute("currentShop");
+//		空值判断
+		if((pageIndex > -1) && (pageSize > -1) && (currentShop != null) && (currentShop.getShopId() != null)) {
+			
+		}
+		return modelMap;
 	}
 	/**
 	 * 处理图片私有方法

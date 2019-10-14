@@ -19,6 +19,7 @@ import com.zhxgkj.o2o.enums.ProductStateEnum;
 import com.zhxgkj.o2o.exceptions.ProductOperationException;
 import com.zhxgkj.o2o.service.ProductService;
 import com.zhxgkj.o2o.util.ImgUtil;
+import com.zhxgkj.o2o.util.PageCalculator;
 import com.zhxgkj.o2o.util.PathUtil;
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -175,6 +176,18 @@ public class ProductServiceImpl implements ProductService{
 			// 删除数据库中图片
 			productImgDao.deleteProductImgByProductId(productId);
 		}
+	}
+	@Override
+	public ProductExecution getProductList(Product productCondition, int pageIndex, int pageSize) {
+//		页码转换成数据库的行码，并调用dao层取回指定页码的商品列表
+		int rowIndex = PageCalculator.calculaterRowIndex(pageIndex, pageSize);
+		List<Product> productList = productDao.queryProductList(productCondition, pageIndex, pageSize);
+//		基于同样的条件查询该条件下的商品总数
+		int count = productDao.queryProductCount(productCondition);
+		ProductExecution pe = new ProductExecution();
+		pe.setProductList(productList);
+		pe.setCount(count);
+		return pe;
 	}
 
 	

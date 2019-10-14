@@ -19,6 +19,14 @@ public interface ProductService {
 	 */
 	ProductExecution addProduct(Product product,MultipartFile productImg,List<MultipartFile> productImgList)throws ProductOperationException;
 	/**
+	 * 查询商品列表并分页，可输入条件：商品名（模糊），商品状态，店铺id,商品类别
+	 * @param productCondition
+	 * @param pageIndex
+	 * @param pageSize
+	 * @return
+	 */
+	ProductExecution getProductList(Product productCondition,int pageIndex,int pageSize);
+	/**
 	 * 通过商品id查询唯一的商品信息
 	 * @param productId
 	 * @return
