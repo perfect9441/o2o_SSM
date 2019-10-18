@@ -18,11 +18,13 @@ $(function() {
 					var contraryStatus = 0;
 					// 状态值为0，表明商品已下架，操作变为“上架”
 					if (item.enableStatus == 0) {
+//						状态值为0，表示已下架，操作变为上架
 						textOp = "上架";
 						contraryStatus = 1;
 					} else {
 						contraryStatus = 0;
 					}
+//					拼接每件商品的行信息
 					tempHtml += '' + '<div class="row row-product">'
 							+ '<div class="col-33">'
 							+ item.productName
@@ -85,6 +87,7 @@ $(function() {
 		product.productId = id;
 		product.enableStatus = enableStatus;
 		$.confirm('确定么?', function() {
+//			上下架操作
 			$.ajax({
 				url : statusUrl,
 				type : 'POST',

@@ -37,8 +37,8 @@ public class ShopAdminController {
 		return "shop/productoperation";
 	}
 ////	转发至商品管理页面
-//	@RequestMapping(value="/productmanagement", method = RequestMethod.GET)
-//	public String productManagement() {
-//		return "shop/productmanagement";
-//	}
+	@RequestMapping(value="/productmanagement", method = RequestMethod.GET)
+	public String productManagement() {
+		return "shop/productmanagement";
+	}
 }

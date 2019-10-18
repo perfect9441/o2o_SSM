@@ -69,6 +69,7 @@ public class ProductDaoTest extends BaseTest{
 		effectedNum = productDao.insertProduct(product3);
 		assertEquals(1, effectedNum);
 	}
+	@Ignore
 	@Test
 	public void testBQueryproductList()throws Exception{
 		Product productCondition = new Product();
@@ -130,6 +131,12 @@ public class ProductDaoTest extends BaseTest{
 		product.setProductCategory(pc);
 //		修改productid为1的商品的名称商品类别并校验影响的行数是否为1
 		int effectedNum = productDao.updateProduct(product);
+		assertEquals(1, effectedNum);
+	}
+	@Test
+	public void testEUpdateProductCategoryToNull() {
+//		将productCategoryId为2的商品分类下的商品的商品类别置为空
+		int effectedNum = productDao.updateProductCategoryToNull(2L);
 		assertEquals(1, effectedNum);
 	}
 }
