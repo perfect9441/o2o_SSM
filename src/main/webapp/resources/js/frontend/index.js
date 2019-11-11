@@ -15,15 +15,17 @@ $(function(){
 							  + '"alt="'+ item.lineName + '"></a>'+'</div>';
 			});
 //			将轮播图组赋值给前段HTML控件
-			$.('.swiper-wrapper').html(swiperHtml);
+			$('.swiper-wrapper').html(swiperHtml);
 //			设定轮播图轮换时间为3秒
-			$.(".swiper-container").swiper({
+			$(".swiper-container").swiper({
 				autoplay:3000,
 //				用户对轮播图片进行操作时，是否自动停止autoplay
 				autoplayDisableOnInteraction:false
 			});
+//			获取后台传递过来的大类列表
 			var shopCategoryList = data.shopCategoryList;
 			var categoryHtml='';
+//			遍历大类列表，拼接处两两一行的类别
 			shopCategoryList.map(function(item,index){
 				categoryHtml+=''
 							  +'<div class="col-50 shop-classify" data-category='
@@ -39,6 +41,14 @@ $(function(){
 			$('.row').html(categoryHtml);
 		}
 	});
+//	点击“我的”，显示侧边栏
+	$('#me').click(function(){
+		$.openPanel('#panel-right-demo');
+	});
 	
-	
+	$('#row').on('click','shop-classify',function(e){
+		var shopCategoryId = e.currentTarget.dataset.category;
+		var newUrl = '/o2o/frontend/shoplist?parentId='+shopCategoryId;
+		window.location.href = newUrl
+	});
 })
