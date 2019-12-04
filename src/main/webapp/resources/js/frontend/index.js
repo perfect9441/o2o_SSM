@@ -43,10 +43,10 @@ $(function(){
 	});
 //	点击“我的”，显示侧边栏
 	$('#me').click(function(){
-		$.openPanel('#panel-right-demo');
+		$.openPanel('#panel-left-demo');
 	});
 	
-	$('#row').on('click','shop-classify',function(e){
+	$('.row').on('click','.shop-classify',function(e){
 		var shopCategoryId = e.currentTarget.dataset.category;
 		var newUrl = '/o2o/frontend/shoplist?parentId='+shopCategoryId;
 		window.location.href = newUrl

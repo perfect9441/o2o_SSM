@@ -1,16 +1,15 @@
-@charset "UTF-8";
-.row-shop{
-	border: 1px solid #999;
-	padding: .5rem;
-	border-bottom: none;
+.row-shop {
+    border: 1px solid #999;
+    padding: .5rem;
+    border-bottom: none;
 }
-.row-shop:last-child{
-	border-boottom:1px solid #999;
+.row-shop:last-child {
+    border-bottom: 1px solid #999;
 }
-.shop-name{
-	white-space: nowrap;
-	overflow-x: scroll;
+.shop-name {
+    white-space: nowrap;
+    overflow-x: scroll;
 }
-.shop-wrap a{
-	
+.shop-wrap a {
+
 }

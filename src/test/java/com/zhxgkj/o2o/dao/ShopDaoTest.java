@@ -22,10 +22,15 @@ public class ShopDaoTest extends BaseTest{
 	@Test
 	public void testQueryShopListAndCount() {
 		Shop shopCondition = new Shop();
-		PersonInfo owner = new PersonInfo();
-		owner.setUserId(1L);
-		shopCondition.setOwner(owner);
-		List<Shop> shopList = shopDao.queryShopList(shopCondition, 0, 2);
+//		PersonInfo owner = new PersonInfo();
+//		owner.setUserId(1L);
+		ShopCategory childCategory = new ShopCategory();
+		ShopCategory parentCategory = new ShopCategory();
+		parentCategory.setShopCategoryId(3L);
+		childCategory.setParent(parentCategory);
+		shopCondition.setShopCategory(childCategory);
+//		shopCondition.setOwner(owner);
+		List<Shop> shopList = shopDao.queryShopList(shopCondition, 0, 5);
 		int count = shopDao.queryShopCount(shopCondition);
 		System.out.println("店铺列表大小：" + shopList.size()+"列表总数"+count);
 	}
