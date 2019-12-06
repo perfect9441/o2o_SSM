@@ -1,7 +1,7 @@
 $(function() {
 	var loading = false;
 	// 分页允许返回的最大条数，超过此数值，禁止访问后台
-	var maxItems = 999;
+	var maxItems = 20;
 	// 一页返回的最大条数
 	var pageSize = 3;
 //	获取店铺列表的URL
@@ -81,13 +81,14 @@ $(function() {
 							+ '</div>' + '</div>' + '</li>' + '</ul>'
 							+ '</div>' + '</div>' + '<div class="card-footer">'
 							+ '<p class="color-gray">'
-//							+ new Date(item.lastEditTime).Format("yyyy-MM-dd") 该方法已被弃用
+							+ new Date(item.lastEditTime).Format("yyyy-MM-dd") //该方法已被弃用
 							+ '更新</p>' + '<span>点击查看</span>' + '</div>'
 							+ '</div>';
 				});
 				$('.list-div').append(html);
 				// 目前显示的卡片总数
 				var total = $('.list-div .card').length;
+
 				if (total >= maxItems) {
 					// 异常加载提示符
 					$('.infinite-scroll-preloader').hide();
@@ -112,7 +113,7 @@ $(function() {
 	// 店铺详情页面
 	$('.shop-list').on('click', '.card', function(e) {
 		var shopId = e.currentTarget.dataset.shopId;
-		window.location.href = '/o2o/front/shopdetail?shopId=' + shopId;
+		window.location.href = '/o2o/frontend/shopdetail?shopId=' + shopId;
 	});
 //	选择新的店铺类别之后，重置页码，清空原先的店铺列表，按照新的类别去查询
 	$('#shoplist-search-div').on(
